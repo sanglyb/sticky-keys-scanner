@@ -1,6 +1,6 @@
 # sticky-keys-scanner
 This is fork version of original TrullJ script - https://github.com/TrullJ/sticky-keys-scanner
-My version is working on old powershell (tested on version 2), also my script does not write messages on screen, but writes it to log files, so u can start this script, for exmple as logon script and later analyze logs for all your computers.
+My version is working with old powershell (tested on version 2), also my script does not write messages on screen, but writes it to log files, so u can start this script, for exmple as logon script and later analyze logs for all your computers.
 
 A PowerShell function that scans for the existence of Sticky Key backdoors.
 
