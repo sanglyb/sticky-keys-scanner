@@ -4,7 +4,7 @@ function Get-FileHash-Cust{
     $Path
     )
      $HashAlgorithm = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider;
-     $Hash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash([System.IO.File]::ReadAllBytes($Path)));
+     $Hash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash([System.IO.File]::ReadAllBytes($Path.FullName)));
      $Properties = @{'Algorithm' = 'MD5';
                      'Path' = $Path;
                      'Hash' = $Hash.Replace('-', '');
