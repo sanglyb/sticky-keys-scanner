@@ -4,7 +4,7 @@ function Get-FileHash-Cust{
     $Path
     )
      $HashAlgorithm = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider;
-     $Hash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash([System.IO.File]::ReadAllBytes($Path.FullName)));
+     $Hash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash([System.IO.File]::ReadAllBytes($Path)));
      $Properties = @{'Algorithm' = 'MD5';
                      'Path' = $Path;
                      'Hash' = $Hash.Replace('-', '');
@@ -18,7 +18,7 @@ function Get-FileHash-Cust{
 	$computername=$computername.value
 	$ipaddress=$ipaddress[0]
 	$head=$computername+" "+$date+" "+$ipaddress
-	$logpath ="\\some\net\path\$computername.txt"
+	$logpath ="C:\Users\sanglyb\Desktop\$computername.txt"
     $cmdHash = Get-FileHash-Cust -Path $env:windir\System32\cmd.exe
 	$psHash = Get-FileHash-Cust -Path $env:windir\System32\WindowsPowerShell\v1.0\powershell.exe
     $explorerHash = Get-FileHash-Cust -Path $env:windir\explorer.exe
@@ -222,6 +222,8 @@ function Get-FileHash-Cust{
                 add-content $logpath "Possible backdoor identified at:"
                 Get-Item -Path ($key + $nameSethc)
                 add-content $logpath ""
+                Add-Content $logpath $key
+                Add-Content $logpath $nameSethc
                 add-content $logpath "Investigate to determine if value of Debugger property set to system-level shell 
                 - e.g., cmd.exe"
                 add-content $logpath ""
@@ -240,6 +242,8 @@ function Get-FileHash-Cust{
                 add-content $logpath "Possible backdoor identified at:"
                 Get-Item -Path ($key + $nameUtilman)
                 add-content $logpath ""
+                add-content $logpath $key
+                add-content $logpath $nameUtilman
                 add-content $logpath "Investigate to determine if value of Debugger property set to system-level shell 
                 - e.g., cmd.exe"
                 add-content $logpath ""
